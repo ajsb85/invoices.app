@@ -1,0 +1,30 @@
+{
+  "name": "invoices",
+  "version": "0.1.0",
+  "authors": [
+    "Alexander J. Salas B. <a.salas@ieee.org>"
+  ],
+  "description": "Electrom App to Create Invoices",
+  "main": "index.html",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "fastercar",
+    "invoices"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "http://fastercar.com.ve",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.6",
+    "angular-material": "~0.11.0"
+  }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2015 Fastercar CA. All rights reserved.
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/components/angular-material/angular-material.css">
+    <title>Invoices</title>
+  </head>
+  <body ng-app="demoApp">
+    <div ng-controller="demoController as demo">
+      <md-button>{{message}}</md-button>
+    </div>
+
+    <!-- Angular Material Dependencies -->
+    <script src="assets/components/angular/angular.js"></script>
+    <script src="assets/components/angular-animate/angular-animate.js"></script>
+    <script src="assets/components/angular-aria/angular-aria.js"></script>
+
+    <!-- Angular Material Javascript using GitCDN to load directly from `bower-material/master` -->
+    <script src="assets/components/angular-material/angular-material.js"></script>
+    <script>
+      (function(){
+        var app = angular.module('demoApp', ['ngMaterial'])
+        .controller('demoController', function($scope){
+            $scope.message = 'We are using io.js ' + process.version + ' and Electron ' + process.versions['electron'];
+        });
+      })();
+    </script>
+  </body>
+</html>
