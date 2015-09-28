@@ -1,0 +1,114 @@
+doctype html
+//
+  Copyright (c) 2015 Fastercar CA. All rights reserved.
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+html(lang='es', ng-app='invoicesApp')
+  head
+    meta(charset='utf-8')
+    meta(name='format-detection', content='telephone=no')
+    meta(name='msapplication-tap-highlight', content='no')
+    meta(name='robots', content='noindex')
+    // WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323
+    meta(name='viewport', content='user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height')
+    link(rel='stylesheet', type='text/css', href='assets/css/style.css')
+    link(rel='stylesheet', href='assets/components/angular-material/angular-material.css')
+    title Fastercar Facturas
+  body(layout='row', ng-controller='AppCtrl')
+    md-sidenav.md-sidenav-left.md-whiteframe-z2(layout='column', md-component-id='left', md-is-locked-open="$mdMedia('gt-md')")
+      md-toolbar.md-hue-2
+        span(flex='')
+        div(layout='row', layout-align='start center')
+          img.face(ng-src='assets/image/ghazitrad.png', alt='')
+          span(flex='')
+        span(flex='')
+        .md-body-2 Ghazi Trad
+        .md-body-1 fastercar_ca@hotmail.com
+      md-list
+        md-list-item.md-2-line(ng-repeat='item in menu', role='link', md-ink-ripple='')
+          md-icon(md-svg-icon='{{item.icon}}', aria-label='{{item.title}}')
+          .md-list-item-text
+            span.md-body-2 {{item.title}}
+        md-divider
+        md-subheader.md-no-sticky Administración
+        md-list-item.md-2-line(ng-repeat='item in admin', role='link', md-ink-ripple='')
+          md-icon(md-svg-icon='{{item.icon}}', aria-label='{{item.title}}')
+          .md-list-item-text
+            span.md-body-2 {{item.title}}
+    .relative(layout='column', layout-fill='', role='main')
+      md-button.md-fab.md-fab-bottom-right(aria-label='Add', ng-click='showAdd($event)')
+        md-icon(md-svg-icon='content:ic_add_24px', aria-label='Plus')
+      md-toolbar.animate-show.md-whiteframe-z1(ng-show='!showSearch')
+        .md-toolbar-tools
+          md-button.md-icon-button(ng-click="toggleSidenav('left')", hide-gt-md='', aria-label='Menu')
+            md-icon(md-svg-icon='navigation:ic_menu_24px', aria-label='Menu')
+          h3
+            | Fastercar CA
+          span(flex='')
+          md-button.md-icon-button(aria-label='Buscar', ng-click='toggleSearch()')
+            md-icon(md-svg-icon='action:ic_search_24px', aria-label='Buscar')
+          md-button.md-icon-button(aria-label='Open Settings', ng-click='showListBottomSheet($event)')
+            md-icon(md-svg-icon='navigation:ic_more_vert_24px', aria-label='Mas')
+        span(flex='')
+      md-toolbar.animate-show.md-hue-1.md-whiteframe-z1(ng-show='showSearch')
+        .md-toolbar-tools
+          md-button.md-icon-button(ng-click='toggleSearch()', aria-label='Menu')
+            md-icon(md-svg-icon='navigation:ic_arrow_back_24px', aria-label='Atras')
+          h3(role='button', ng-click='toggleSearch()')
+            | Atras
+          span(flex='5')
+          span(ng-controller='DemoCtrl as ctrl', flex='')
+            md-autocomplete(md-theme='input', md-input-name='autocompleteField', md-no-cache='ctrl.noCache', md-selected-item='ctrl.selectedItem', md-search-text='ctrl.searchText', md-items='item in ctrl.querySearch(ctrl.searchText)', md-item-text='item.display', placeholder='Buscar')
+              md-item-template
+                span(md-highlight-text='ctrl.searchText') {{item.display}}
+              div(ng-messages='searchForm.autocompleteField.$error', ng-if='searchForm.autocompleteField.$touched')
+                div(ng-message='required')
+                  | You 
+                  b must
+                  |  have a favorite state.
+                div(ng-message='minlength') Your entry is not long enough.
+                div(ng-message='maxlength') Your entry is too long.
+      md-content(flex='') 
+        ui-view(layout='row', layout-fill='', layout-padding='', layout-align='center center')
+          div(flex-gt-sm='90', flex-gt-md='80')
+            h2.md-title.inset Clientes 
+            md-card
+              md-list
+                md-list-item.md-3-line(ng-repeat='item in customers | filter:search')
+                  img.md-avatar(hide-sm='', gravatar-src="'{{item.email}}'")
+                  .md-list-item-text
+                    h3 {{item.name}}
+                    h4 {{item.rif}}
+                    p {{item.address}}
+                  md-divider(md-inset='', hide-sm='', ng-if='!$last')
+                  md-divider(hide-gt-sm='', ng-if='!$last')
+                md-divider
+                md-list-item
+                  md-button.md-primary
+                    md-icon(md-svg-icon='navigation:ic_arrow_forward_24px', aria-label='Forward')
+                    span More
+    // Angular Material Dependencies
+    script(src='assets/components/angular/angular.js')
+    script(src='assets/components/angular-animate/angular-animate.js')
+    script(src='assets/components/angular-aria/angular-aria.js')
+    script(src='assets/components/angular-route/angular-route.js')
+    script(src='assets/components/angular-gravatar/build/angular-gravatar.js')
+    // Angular Material Javascript using GitCDN to load directly from `bower-material/master`
+    script(src='assets/components/angular-material/angular-material.js')
+    // App Files
+    script(src='assets/js/app.js')
+    // Controllers Files
+    script(src='assets/js/login.js')
+    script(src='assets/js/index.js')
+    script(src='assets/js/invoices.js')
+    script(src='assets/js/customers.js')
+    script(src='assets/js/users.js')
+    script(src='assets/js/settings.js')

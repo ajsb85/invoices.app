@@ -1,0 +1,62 @@
+[ng-click]:hover {
+  cursor: pointer;
+}
+
+md-content.md-default-theme {
+  background-color: #eee;
+}
+
+md-sidenav > md-toolbar {
+  padding: 15px;
+  height: 150px;
+  max-height: 150px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-image: url('../image/cover.jpg');
+}
+md-sidenav md-list-item.md-2-line .md-list-item-text {
+  padding-top: 14px;
+  padding-bottom: 12px;
+}
+md-sidenav md-divider {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+md-sidenav md-icon {
+  fill: #737373;
+  position: relative;
+}
+md-sidenav .md-avatar {
+  height: 64px;
+  width: 64px;
+}
+
+/* More closely matches https://www.google.com/design/spec/components/lists.html#lists-specs */
+md-list-item.md-3-line md-divider[md-inset] {
+  left: 70px;
+}
+
+.md-avatar > svg {
+  border-radius: 50%;
+}
+
+/* fade animation */
+.animate-show {
+  transition: 0.75s ease-out opacity;
+  opacity: 1;
+}
+.animate-show.ng-hide {
+  height: 0;
+  min-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+.face {
+    border-radius: 50%;
+    height: 64px;
+    width: 64px;
+    fill: #737373;
+    position: relative;
+}

@@ -1,5 +1,5 @@
 {
-  "name": "invoices",
+  "name": "invoices.app",
   "version": "0.1.0",
   "authors": [
     "Alexander J. Salas B. <a.salas@ieee.org>"
@@ -25,6 +25,8 @@
   ],
   "dependencies": {
     "angular": "~1.4.6",
-    "angular-material": "~0.11.0"
+    "angular-gravatar": "~0.4.1",
+    "angular-material": "~0.11.0",
+    "angular-route": "~1.4.6"
   }
 }
